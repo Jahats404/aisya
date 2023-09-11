@@ -36,12 +36,11 @@ class LoginController extends Controller
     {
         // dd($request);
         $data = [
-            'name' => $request->input('name'),
+            'email' => $request->input('email'),
             'password' => $request->input('password'),
         ];
 
         if (Auth::attempt($data)) {
-            // $request->session()->regenerate();
             if (auth()->user()->role_id == 1) {
                 return redirect()->route('a.dashboard');
             }

@@ -34,7 +34,7 @@ class User extends Authenticatable
 
     public static $rules = [
         'name' => 'required|string|max:255',
-        'nik' => 'required|unique:users,nik',
+        'nik' => 'required|unique:users,nik|digits:16|regex:/^3301/',
         'tanggal_lahir' => 'required',
         'kk' => 'required',
         'kecamatan' => 'required',
@@ -49,6 +49,8 @@ class User extends Authenticatable
         'name.max' => 'Nama tidak boleh lebih dari :max karakter.',
         'nik.required' => 'NIK harus diisi.',
         'nik.unique' => 'NIK Sudah Terdaftar.',
+        'nik.digits' => 'NIK harus terdiri dari :digits digit.',
+        'nik.regex' => 'NIK harus berdomisili Cilacap.',
         'tanggal_lahir.required' => 'Tanggal Lahir harus diisi.',
         'kk.required' => 'KK harus diisi.',
         'kecamatan.required' => 'Kecamatan Harus diisi.',

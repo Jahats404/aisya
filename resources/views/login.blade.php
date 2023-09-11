@@ -30,8 +30,8 @@
                                     <form action="{{ route('actionlogin') }}" method="POST">
                                         @csrf
                                         <div class="form-group">
-                                            <label><strong>Username</strong></label>
-                                            <input type="text" class="form-control" name="name">
+                                            <label><strong>Email</strong></label>
+                                            <input type="text" class="form-control" placeholder="Email" name="email">
                                         </div>
                                         <div class="form-group">
                                             <label><strong>Password</strong></label>
