@@ -45,8 +45,8 @@
         ***********************************-->
         <div class="nav-header">
             <a href="index.html" class="brand-logo">
-                <img class="logo-abbr" src="./images/logo.png" alt="">
-                <img class="logo-compact" src="./images/logo-text.png" alt="">
+                <img class="logo-abbr" aria-placeholder="AISYA" src="{{ asset('images/favicon.png') }}" alt="">
+                <img class="logo-compact" aria-placeholder="AISYA" src="{{ asset('images/favicon.png') }}" alt="">
                 <img class="brand-title" src="./images/logo-text.png" alt="">
             </a>
 
@@ -88,8 +88,7 @@
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>Hi, welcome back {{ Auth::user()->name }}</h4>
-                            <span class="ml-1">Element</span>
+                            <h4>Hi, Selamat Datang {{ Auth::user()->name }}</h4>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">

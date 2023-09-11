@@ -7,7 +7,9 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>AISYA - Arsip Masyarakat</title>
+        <title>
+            AISYA - Arsip Masyarakat
+        </title>
 
         <!-- CSS FILES -->        
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,6 +23,8 @@
         <link href="{{ asset('landing/css/bootstrap-icons.css') }}" rel="stylesheet">
 
         <link href="{{ asset('landing/css/templatemo-topic-listing.css') }}" rel="stylesheet">      
+
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon.png') }}">
 <!--
 
 TemplateMo 590 topic listing
@@ -36,14 +40,9 @@ https://templatemo.com/tm-590-topic-listing
 
             <nav class="navbar navbar-expand-lg">
                 <div class="container">
-                    <a class="navbar-brand" href="index.html">
-                        <i class="bi-back"></i>
-                        <span>Topic</span>
+                    <a class="navbar-brand" href="http://aisya.cilacapkab.go.id/">
+                        <img src="{{ asset('landing/images/datar.png') }}" class="" height="50" width="120" alt="">
                     </a>
-
-                    <div class="d-lg-none ms-auto me-4">
-                        <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
-                    </div>
     
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>

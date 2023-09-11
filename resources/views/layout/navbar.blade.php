@@ -74,6 +74,8 @@
                             class="ti-arrow-right"></i></a>
                 </div>
             </li> --}}
+            
+            
             <li class="nav-item dropdown header-profile">
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
                     @if (Auth()->user()->url)
@@ -84,16 +86,12 @@
                     
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    @if (auth()->user()->role_id == 2)    
+                    @if (auth()->user()->role_id == 2)
                         <a href="{{ route('m.profile') }}" class="dropdown-item">
                             <i class="icon-user"></i>
                             <span class="ml-2">Profile </span>
                         </a>
-                    @endif
-                    {{-- <a href="./email-inbox.html" class="dropdown-item">
-                        <i class="icon-envelope-open"></i>
-                        <span class="ml-2">Inbox </span>
-                    </a> --}}
+                        @endif
                     <a href="{{ route('actionlogout') }}" class="dropdown-item">
                         <i class="icon-key"></i>
                         <span class="ml-2">Logout </span>
