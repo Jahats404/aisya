@@ -31,11 +31,10 @@ Route::get('/map', function () {
 });
 Route::get('/', [LoginController::class, 'page']);
 
-Route::get('/storage-link', function(){
-    $targetFolder = storage_path('app/public');
-    $linkFolder = $_SERVER['DOCUMENT_ROOT'] . '/storage';
-    symlink($targetFolder, $linkFolder);
-  });
+Route::get('/storage-link', function() {
+    Artisan::call('storage:link');
+    return 'The links have been created.';
+});
 
 Route::get('register', [UserController::class, 'register'])->name('register');
 Route::post('register/action', [UserController::class, 'actionregister'])->name('actionregister');
