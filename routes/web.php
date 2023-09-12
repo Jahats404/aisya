@@ -36,6 +36,11 @@ Route::get('/storage-link', function() {
     return 'The links have been created.';
 });
 
+Route::get('/route-clear', function() {
+    Artisan::call('route:clear');
+    return 'Route cache cleared!';
+});
+
 Route::get('register', [UserController::class, 'register'])->name('register');
 Route::post('register/action', [UserController::class, 'actionregister'])->name('actionregister');
 
