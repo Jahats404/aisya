@@ -205,10 +205,9 @@
                                         <thead>
                                             <tr>
                                                 <th>Kategori</th>
-                                                <th>Nama File</th>
+                                                <th>Nama</th>
                                                 <th>Deskripsi</th>
                                                 <th>Tanggal Upload</th>
-                                                <th>Aktor</th>
                                                 <th class="text-center">Aksi</th>
                                             </tr>
                                         </thead>
@@ -216,10 +215,9 @@
                                             @foreach ($arpen as $a)
                                                 <tr>
                                                     <td> {{ $a->kategori }} </td>
-                                                    <td> {{ $a->nama_arpen }} </td>
+                                                    <td> {{ $a->users->name }} </td>
                                                     <td> {{ $a->deskripsi_arpen }} </td>
                                                     <td>{{ $a->created_at->format('l, d-m-Y') }}</td>
-                                                    <td> {{ $a->users->name }} </td>
                                                     <td class="d-flex justify-content-center">
                                                         {{-- <button type="button" style="width: 70px; margin-right: 4%" data-toggle="modal" data-target="#gambarModal{{ $a->id_arpen }}" class="btn btn-rounded btn-primary">Lihat</button> --}}
                                                         <a href="{{ $a->url }}" target="_blank" class="btn"><i class="ti-layout-media-center-alt"></i></a>
