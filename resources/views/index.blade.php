@@ -106,9 +106,7 @@
                                     <div class="stat-text">Arsip Kependudukan </div>
                                     <div class="stat-digit"></div>
                                 </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success w-" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+                                <h1>{{ $countkependudukan }}</h1>
                             </div>
                         </div>
                     </div>
@@ -119,9 +117,7 @@
                                     <div class="stat-text">Arsip Pendidikan</div>
                                     <div class="stat-digit"></div>
                                 </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-primary w-" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+                                <h1>{{ $countpendidikan }}</h1>
                             </div>
                         </div>
                     </div>
@@ -132,9 +128,7 @@
                                     <div class="stat-text">Arsip Kesehatan</div>
                                     <div class="stat-digit"></div>
                                 </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-warning w-" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+                                <h1>{{ $countkesehatan }}</h1>
                             </div>
                         </div>
                     </div>
@@ -145,9 +139,7 @@
                                     <div class="stat-text">Arsip Pribadi</div>
                                     <div class="stat-digit"></div>
                                 </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-danger w-" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+                                <h1>{{ $countpribadi }}</h1>
                             </div>
                         </div>
                         <!-- /# card -->
