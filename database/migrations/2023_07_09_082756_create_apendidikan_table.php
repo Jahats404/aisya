@@ -17,6 +17,7 @@ return new class extends Migration
             $table->uuid('id_arpen')->primary();
             $table->unsignedBigInteger('user_id');
             $table->string('kategori');
+            $table->string('jenjang');
             $table->string('nama_arpen');
             $table->string('deskripsi_arpen');
             $table->string('url');

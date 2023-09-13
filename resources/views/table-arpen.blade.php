@@ -136,7 +136,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Jenjang Pendidikan</label>
-                                            <select name="kategori" class="form-control">
+                                            <select name="jenjang" class="form-control">
                                                 {{-- @foreach ($kategori as $k)
                                                     <option value="{{ $k->id_kategori }}">{{ $k->nama_kategori }}</option>
                                                 @endforeach --}}
@@ -205,6 +205,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Kategori</th>
+                                                <th>Jenjang</th>
                                                 <th>Nama</th>
                                                 <th>Deskripsi</th>
                                                 <th>Tanggal Upload</th>
@@ -214,6 +215,7 @@
                                         <tbody>
                                             @foreach ($arpen as $a)
                                                 <tr>
+                                                    <td> {{ $a->kategori }} </td>
                                                     <td> {{ $a->kategori }} </td>
                                                     <td> {{ $a->users->name }} </td>
                                                     <td> {{ $a->deskripsi_arpen }} </td>
