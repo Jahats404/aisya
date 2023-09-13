@@ -216,7 +216,7 @@
                                             @foreach ($arpen as $a)
                                                 <tr>
                                                     <td> {{ $a->kategori }} </td>
-                                                    <td> {{ $a->kategori }} </td>
+                                                    <td> {{ $a->jenjang }} </td>
                                                     <td> {{ $a->users->name }} </td>
                                                     <td> {{ $a->deskripsi_arpen }} </td>
                                                     <td>{{ $a->created_at->format('l, d-m-Y') }}</td>

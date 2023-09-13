@@ -56,6 +56,7 @@ class ApendidikanController extends Controller
             $arpen->id_arpen = $newIdFormat;
             $arpen->user_id = $id;
             $arpen->kategori = $request->input('kategori');
+            $arpen->jenjang = $request->input('jenjang');
             $arpen->nama_arpen = $originalName;
             $arpen->deskripsi_arpen = $request->input('deskripsi_arpen');
             $arpen->url = $url;
