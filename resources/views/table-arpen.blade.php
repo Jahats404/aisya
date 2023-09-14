@@ -119,32 +119,36 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Jenjang Pendidikan</label>
-                                            <select name="jenjang" class="form-control">
-                                                <option>-- Pilih Jenjang Pendidikan --</option>
+                                            <select name="jenjang" class="form-control @error('jenjang') is-invalid @enderror">
+                                                <option value="">-- Pilih Jenjang Pendidikan --</option>
                                                 <option value="SD">SD</option>
                                                 <option value="SMP">SMP</option>
                                                 <option value="SMA">SMA</option>
                                                 <option value="Perguruan Tinggi">Perguruan Tinggi</option>
                                             </select>
+                                            @error('jenjang')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label>Kategori</label>
-                                            <select name="kategori" class="form-control">
-                                                <option>-- Pilih Kategori --</option>
+                                            <select name="kategori" class="form-control @error('kategori') is-invalid @enderror">
+                                                <option value="">-- Pilih Kategori --</option>
                                                 <option value="ijazah">Ijazah</option>
                                                 <option value="raport">Raport</option>
                                                 <option value="lain-lain">Lain - Lain</option>
                                             </select>
                                             @error('kategori')
-                                                <div class="text-danger">{{ $message }}</div>
+                                                <span class="invalid-feedback">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label class="text-dark">Deskripsi</label>
                                             <textarea class="form-control" name="deskripsi_arpen" placeholder="Isi Deskripsi" rows="4" id="comment"></textarea>
-                                            @error('deskripsi_arpen')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
                                         </div>
                                         <button type="submit" class="btn btn-primary mt-3">Submit</button>
                                     </form>
@@ -166,15 +170,6 @@
                                     {{ session('success') }}
                                 </div>
                             @endif
-                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table text-dark table-responsive-sm display" id="example" style="min-width: 845px">
@@ -194,7 +189,13 @@
                                                     <td> {{ $a->kategori }} </td>
                                                     <td> {{ $a->jenjang }} </td>
                                                     <td> {{ $a->users->name }} </td>
-                                                    <td> {{ $a->deskripsi_arpen }} </td>
+                                                    <td class="text-center">
+                                                        @if ($a->deskripsi_arpen == NULL)
+                                                            -
+                                                        @else
+                                                        {{ $a->deskripsi_arpen }}                                                         
+                                                        @endif
+                                                    </td>
                                                     <td>{{ $a->created_at->format('l, d-m-Y') }}</td>
                                                     <td class="d-flex justify-content-center">
                                                         {{-- <button type="button" style="width: 70px; margin-right: 4%" data-toggle="modal" data-target="#gambarModal{{ $a->id_arpen }}" class="btn btn-rounded btn-primary">Lihat</button> --}}
@@ -242,14 +243,26 @@
                                                                 <form action="{{ route('m.update-arpen', ['id_arpen' => $a->id_arpen]) }}" method="POST">
                                                                     @csrf
                                                                     @method('PUT')
-
                                                                     <div class="form-group">
-                                                                        <label>Nama:</label>
-                                                                        <input type="text" name="nama_arpen" class="form-control" value="{{ $a->nama_arpen }}">
+                                                                        <label>Jenjang Pendidikan</label>
+                                                                        <select name="jenjang" class="form-control @error('jenjang') is-invalid @enderror">
+                                                                            <option @if ($a->jenjang == 'SD') selected @endif value="SD">SD</option>
+                                                                            <option @if ($a->jenjang == 'SMP') selected @endif value="SMP">SMP</option>
+                                                                            <option @if ($a->jenjang == 'SMA') selected @endif value="SMA">SMA</option>
+                                                                            <option @if ($a->jenjang == 'Perguruan Tinggi') selected @endif value="Perguruan Tinggi">Perguruan Tinggi</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Kategori</label>
+                                                                        <select name="kategori" class="form-control @error('kategori') is-invalid @enderror">
+                                                                            <option @if ($a->kategori == 'ijazah') seleced @endif value="ijazah">Ijazah</option>
+                                                                            <option @if ($a->kategori == 'raport') selected @endif value="raport">Raport</option>
+                                                                            <option value="lain-lain">Lain - Lain</option>
+                                                                        </select>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Deskripsi:</label>
-                                                                        <textarea name="deskripsi_arpen" class="form-control">{{ $a->deskripsi_arpen }}</textarea>
+                                                                        <textarea name="deskripsi_arpen" placeholder="Isi Deskripsi" class="form-control">{{ $a->deskripsi_arpen }}</textarea>
                                                                     </div>
                                                                     <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                                                                 </form>

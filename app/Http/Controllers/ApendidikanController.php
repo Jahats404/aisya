@@ -28,50 +28,46 @@ class ApendidikanController extends Controller
                     ->withInput();
         };
     
-            $image = $request->file('image');
-            $originalName = $image->getClientOriginalName();
-            $hashName = $image->hashName();
-            // Simpan gambar ke direktori yang diinginkan (misalnya: storage/app/public/images)
-            $path = $image->store('public/img-arpen');
-            
-            // Dapatkan URL gambar yang diunggah
-            $url = asset('storage/img-arpen/' . $hashName);
-            
-            // Kode Otomatis
-            $pendidikan = Apendidikan::all();
-            $LastPendidikan = Apendidikan::orderBy('id_arpen','desc')->first();
-            $newIdPendidikan = $LastPendidikan ? (int) substr($LastPendidikan->id_arpen,1) + 1 : 1;
-            $newIdFormat = 'P'. str_pad($newIdPendidikan,3,'0', STR_PAD_LEFT);
-            
-            // ID Masyarakat
-            $id = Auth::user()->id;
-            // untuk mengambil data kk user yan login
-            $userKK = DB::table('users')
-                    ->select('kk')
-                    ->where('id', $id)
-                    ->get();
-            $kk = $userKK[0]->kk;
-            
+        $image = $request->file('image');
+        $originalName = $image->getClientOriginalName();
+        $hashName = $image->hashName();
+        // Simpan gambar ke direktori yang diinginkan (misalnya: storage/app/public/images)
+        $path = $image->store('public/img-arpen');
+        
+        // Dapatkan URL gambar yang diunggah
+        $url = asset('storage/img-arpen/' . $hashName);
+        
+        // Kode Otomatis
+        $pendidikan = Apendidikan::all();
+        $LastPendidikan = Apendidikan::orderBy('id_arpen','desc')->first();
+        $newIdPendidikan = $LastPendidikan ? (int) substr($LastPendidikan->id_arpen,1) + 1 : 1;
+        $newIdFormat = 'P'. str_pad($newIdPendidikan,3,'0', STR_PAD_LEFT);
+        
+        // ID Masyarakat
+        $id = Auth::user()->id;
+        // untuk mengambil data kk user yan login
+        $userKK = DB::table('users')
+                ->select('kk')
+                ->where('id', $id)
+                ->get();
+        $kk = $userKK[0]->kk;
+        
 
-            // Tambahkan data ke tabel arsip_pendidikan
-            $arpen = new Apendidikan;
-            $arpen->id_arpen = $newIdFormat;
-            $arpen->user_id = $id;
-            $arpen->kategori = $request->input('kategori');
-            $arpen->jenjang = $request->input('jenjang');
-            $arpen->nama_arpen = $originalName;
-            $arpen->deskripsi_arpen = $request->input('deskripsi_arpen');
-            $arpen->url = $url;
-            $arpen->hashname = $hashName;
-            $arpen->kk = $kk;
-            // $arpen->tanggal_upload = $request->input('tanggal_upload');
-            $arpen->save();
-    
-            return redirect()->back()->with('success', 'Data berhasil di Upload');
-        // } catch (\Throwable $th) {
-        //     return redirect()->back()->with('fail', 'Data gagal di Upload');
-        // }
-        // Validasi input
+        // Tambahkan data ke tabel arsip_pendidikan
+        $arpen = new Apendidikan;
+        $arpen->id_arpen = $newIdFormat;
+        $arpen->user_id = $id;
+        $arpen->kategori = $request->input('kategori');
+        $arpen->jenjang = $request->input('jenjang');
+        $arpen->nama_arpen = $originalName;
+        $arpen->deskripsi_arpen = $request->input('deskripsi_arpen');
+        $arpen->url = $url;
+        $arpen->hashname = $hashName;
+        $arpen->kk = $kk;
+        // $arpen->tanggal_upload = $request->input('tanggal_upload');
+        $arpen->save();
+
+        return redirect()->back()->with('success', 'Data berhasil di Upload');
         
     }
 
@@ -88,13 +84,10 @@ class ApendidikanController extends Controller
     }
 
     public function update_arpen(Request $request, $id_arpen){
-    $request->validate([
-        'nama_arpen' => 'required',
-        'deskripsi_arpen' => 'required',
-    ]);
 
     $arsip = Apendidikan::findOrFail($id_arpen);
-    $arsip->nama_arpen = $request->input('nama_arpen');
+    $arsip->jenjang = $request->input('jenjang');
+    $arsip->kategori = $request->input('kategori');
     $arsip->deskripsi_arpen = $request->input('deskripsi_arpen');
     $arsip->save();
 
