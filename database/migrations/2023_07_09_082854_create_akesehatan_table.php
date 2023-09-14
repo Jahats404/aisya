@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('kategori');
             $table->string('nama_arkes');
-            $table->string('deskripsi_arkes');
+            $table->string('deskripsi_arkes')->nullable();
             $table->string('url');
             $table->string('hashname');
             $table->bigInteger('kk')->nullable();

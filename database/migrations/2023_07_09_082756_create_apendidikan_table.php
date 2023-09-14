@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('kategori');
             $table->string('jenjang');
             $table->string('nama_arpen');
-            $table->string('deskripsi_arpen');
+            $table->string('deskripsi_arpen')->nullable();
             $table->string('url');
             $table->string('hashname');
             $table->bigInteger('kk')->nullable();

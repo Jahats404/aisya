@@ -120,6 +120,7 @@
                                         <div class="form-group">
                                             <label>Jenjang Pendidikan</label>
                                             <select name="jenjang" class="form-control">
+                                                <option>-- Pilih Jenjang Pendidikan --</option>
                                                 <option value="SD">SD</option>
                                                 <option value="SMP">SMP</option>
                                                 <option value="SMA">SMA</option>
@@ -129,9 +130,7 @@
                                         <div class="form-group">
                                             <label>Kategori</label>
                                             <select name="kategori" class="form-control">
-                                                {{-- @foreach ($kategori as $k)
-                                                    <option value="{{ $k->id_kategori }}">{{ $k->nama_kategori }}</option>
-                                                @endforeach --}}
+                                                <option>-- Pilih Kategori --</option>
                                                 <option value="ijazah">Ijazah</option>
                                                 <option value="raport">Raport</option>
                                                 <option value="lain-lain">Lain - Lain</option>
@@ -142,7 +141,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="text-dark">Deskripsi</label>
-                                            <textarea class="form-control" name="deskripsi_arpen" rows="4" id="comment"></textarea>
+                                            <textarea class="form-control" name="deskripsi_arpen" placeholder="Isi Deskripsi" rows="4" id="comment"></textarea>
                                             @error('deskripsi_arpen')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
