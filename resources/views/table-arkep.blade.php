@@ -128,7 +128,7 @@
                                     <form action="{{ route('m.arkep-store') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
-                                            <label>Upload file</label>
+                                            <label>Upload file | jpeg,png,jpg,pdf | max:2MB</label>
                                             <input type="file" name="image" class="form-control" placeholder="Pilih File">
                                             @error('image')
                                                 <div class="text-danger">{{ $message }}</div>
