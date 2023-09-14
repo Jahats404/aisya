@@ -128,8 +128,8 @@
                                     <form action="{{ route('m.arpen-store') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
-                                            <label>Upload file</label>
-                                            <input type="file" name="image" class="form-control" placeholder="jpeg,png,jpg,pdf | max:2MB">
+                                            <label>Upload file | jpeg,png,jpg,pdf | max:2MB</label>
+                                            <input type="file" name="image" class="form-control" placeholder="Pilih File">
                                             @error('image')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
