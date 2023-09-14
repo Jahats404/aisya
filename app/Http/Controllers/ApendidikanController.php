@@ -10,6 +10,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ApendidikanController extends Controller
 {
@@ -20,11 +21,12 @@ class ApendidikanController extends Controller
 
     public function arpen_store(Request $request)
     {
-        $request->validate([
-            'image' => 'mimes:jpeg,png,jpg,pdf|max:2048|required',
-            'kategori' => 'required',
-        ]);
-        // try {
+        $validator = Validator::make($request->all(), Apendidikan::$rules, Apendidikan::$messages);
+        if ($validator->fails()) {
+            return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();
+        };
     
             $image = $request->file('image');
             $originalName = $image->getClientOriginalName();

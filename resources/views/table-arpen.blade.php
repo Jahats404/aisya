@@ -105,49 +105,26 @@
                                 <h4 class="card-title">Arsip Pendidikan</h4>
                             </div>
                             <div class="card-body">
-                                {{-- @if (session('success'))
-                                    <div class="alert alert-success">
-                                        {{ session('success') }}
-                                    </div>
-                                @endif
-                                @if (session('fail'))
-                                    <div class="alert alert-danger">
-                                        {{ session('fail') }}
-                                    </div>
-                                @endif --}}
-                                {{-- @if ($errors->any())
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif --}}
                                 <div class="basic-form text-dark">
                                     <form action="{{ route('m.arpen-store') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
                                             <label>Upload file | jpeg,png,jpg,pdf | max:2MB</label>
-                                            <input type="file" name="image" class="form-control" placeholder="Pilih File">
+                                            <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" placeholder="Pilih File">
                                             @error('image')
-                                                <div class="text-danger">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label>Jenjang Pendidikan</label>
                                             <select name="jenjang" class="form-control">
-                                                {{-- @foreach ($kategori as $k)
-                                                    <option value="{{ $k->id_kategori }}">{{ $k->nama_kategori }}</option>
-                                                @endforeach --}}
                                                 <option value="SD">SD</option>
                                                 <option value="SMP">SMP</option>
                                                 <option value="SMA">SMA</option>
                                                 <option value="Perguruan Tinggi">Perguruan Tinggi</option>
                                             </select>
-                                            {{-- @error('kategori')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror --}}
                                         </div>
                                         <div class="form-group">
                                             <label>Kategori</label>
