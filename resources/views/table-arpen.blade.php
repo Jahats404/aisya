@@ -129,7 +129,7 @@
                                         @csrf
                                         <div class="form-group">
                                             <label>Upload file</label>
-                                            <input type="file" name="image" class="form-control" placeholder="Pilih File">
+                                            <input type="file" name="image" class="form-control" placeholder="jpeg,png,jpg,pdf | max:2MB">
                                             @error('image')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -140,10 +140,10 @@
                                                 {{-- @foreach ($kategori as $k)
                                                     <option value="{{ $k->id_kategori }}">{{ $k->nama_kategori }}</option>
                                                 @endforeach --}}
-                                                <option value="ijazah">SD</option>
-                                                <option value="raport">SMP</option>
-                                                <option value="lain-lain">SMA</option>
-                                                <option value="lain-lain">Perguruan Tinggi</option>
+                                                <option value="SD">SD</option>
+                                                <option value="SMP">SMP</option>
+                                                <option value="SMA">SMA</option>
+                                                <option value="Perguruan Tinggi">Perguruan Tinggi</option>
                                             </select>
                                             {{-- @error('kategori')
                                                 <div class="text-danger">{{ $message }}</div>
