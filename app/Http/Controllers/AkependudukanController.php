@@ -10,6 +10,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class AkependudukanController extends Controller
 {
@@ -20,10 +21,12 @@ class AkependudukanController extends Controller
 
     public function arkep_store(Request $request)
     {
-        $request->validate([
-            'image' => 'mimes:jpeg,png,jpg,pdf|max:2048|required',
-            'kategori' => 'required',
-        ]);
+        $validator = Validator::make($request->all(), Akependudukan::$rules, Akependudukan::$messages);
+        if ($validator->fails()) {
+            return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();
+        };
         try {
     
             $image = $request->file('image');
@@ -81,13 +84,9 @@ class AkependudukanController extends Controller
     }
 
     public function update_arkep(Request $request, $id_arkep){
-        $request->validate([
-            'nama_arkep' => 'required',
-            'deskripsi_arkep' => 'required',
-        ]);
     
         $arsip = Akependudukan::findOrFail($id_arkep);
-        $arsip->nama_arkep = $request->input('nama_arkep');
+        $arsip->kategori = $request->input('kategori');
         $arsip->deskripsi_arkep = $request->input('deskripsi_arkep');
         $arsip->save();
     

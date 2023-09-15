@@ -9,6 +9,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class AkesehatanController extends Controller
 {
@@ -19,10 +20,12 @@ class AkesehatanController extends Controller
 
     public function arkes_store(Request $request)
     {
-        $request->validate([
-            'image' => 'mimes:jpeg,png,jpg,pdf|max:2048|required',
-            'kategori' => 'required',
-        ]);
+        $validator = Validator::make($request->all(), Akesehatan::$rules, Akesehatan::$messages);
+        if ($validator->fails()) {
+            return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();
+        };
         try {
     
             $image = $request->file('image');
@@ -80,13 +83,9 @@ class AkesehatanController extends Controller
     }
 
     public function update_arkes(Request $request, $id_arkes){
-        $request->validate([
-            'nama_arkes' => 'required',
-            'deskripsi_arkes' => 'required',
-        ]);
     
         $arsip = Akesehatan::findOrFail($id_arkes);
-        $arsip->nama_arkes = $request->input('nama_arkes');
+        $arsip->kategori = $request->input('kategori');
         $arsip->deskripsi_arkes = $request->input('deskripsi_arkes');
         $arsip->save();
     

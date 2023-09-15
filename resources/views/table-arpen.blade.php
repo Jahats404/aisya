@@ -148,11 +148,10 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="text-dark">Deskripsi</label>
-                                            <textarea class="form-control" name="deskripsi_arpen" placeholder="Isi Deskripsi" rows="4" id="comment"></textarea>
+                                            <textarea class="form-control" name="deskripsi_arpen" placeholder="Isi Deskripsi (Optional)" rows="4" id="comment"></textarea>
                                         </div>
                                         <button type="submit" class="btn btn-primary mt-3">Submit</button>
                                     </form>
-                                    
                                 </div>
                             </div>
                         </div>
@@ -198,9 +197,7 @@
                                                     </td>
                                                     <td>{{ $a->created_at->format('l, d-m-Y') }}</td>
                                                     <td class="d-flex justify-content-center">
-                                                        {{-- <button type="button" style="width: 70px; margin-right: 4%" data-toggle="modal" data-target="#gambarModal{{ $a->id_arpen }}" class="btn btn-rounded btn-primary">Lihat</button> --}}
                                                         <a href="{{ $a->url }}" target="_blank" class="btn"><i class="ti-layout-media-center-alt"></i></a>
-                                                        {{-- <button type="button" style="width: 70px; margin-right: 4%" data-toggle="modal" data-target="#editModal{{ $a->id_arpen }}" class=""><i class="ti-pencil"></i></button> --}}
                                                         <button type="button" class="btn" data-toggle="modal" data-target="#editModal{{ $a->id_arpen }}" data-bs-toggle="button"><i class="ti-pencil"></i></button>
                                                         <form action="{{ route('m.delete-arpen', ['id_arpen' => $a->id_arpen]) }}" method="POST">
                                                             @csrf
@@ -255,7 +252,7 @@
                                                                     <div class="form-group">
                                                                         <label>Kategori</label>
                                                                         <select name="kategori" class="form-control @error('kategori') is-invalid @enderror">
-                                                                            <option @if ($a->kategori == 'ijazah') seleced @endif value="ijazah">Ijazah</option>
+                                                                            <option @if ($a->kategori == 'ijazah') selected @endif value="ijazah">Ijazah</option>
                                                                             <option @if ($a->kategori == 'raport') selected @endif value="raport">Raport</option>
                                                                             <option value="lain-lain">Lain - Lain</option>
                                                                         </select>

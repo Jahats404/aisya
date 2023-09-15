@@ -9,6 +9,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ApribadiController extends Controller
 {
@@ -19,10 +20,12 @@ class ApribadiController extends Controller
 
     public function arpri_store(Request $request)
     {
-        $request->validate([
-            'image' => 'mimes:jpeg,png,jpg,pdf|max:2048|required',
-            'kategori' => 'required',
-        ]);
+        $validator = Validator::make($request->all(), Apribadi::$rules, Apribadi::$messages);
+        if ($validator->fails()) {
+            return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();
+        };
         try {
 
             $image = $request->file('image');
@@ -84,13 +87,9 @@ class ApribadiController extends Controller
     }
 
     public function update_arpri(Request $request, $id_arpri){
-        $request->validate([
-            'nama_arpri' => 'required',
-            'deskripsi_arpri' => 'required',
-        ]);
         
         $arsip = Apribadi::findOrFail($id_arpri);
-        $arsip->nama_arpri = $request->input('nama_arpri');
+        $arsip->kategori = $request->input('kategori');
         $arsip->deskripsi_arpri = $request->input('deskripsi_arpri');
         $arsip->save();
     

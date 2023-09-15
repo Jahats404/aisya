@@ -23,6 +23,18 @@ class Akesehatan extends Model
         });
     }
 
+    public static $rules = [
+        'image' => 'mimes:jpeg,png,jpg,pdf|max:2048|required',
+        'kategori' => 'required',
+    ];
+
+    public static $messages = [
+        'image.required' => 'Anda belum mengisi Dokumen',
+        'image.mimes' => 'Dokumen harus berformat jpeg,png,jpg,pdf',
+        'image.max' => 'Ukuran Dokumen maksimal 2MB',
+        'kategori.required' => 'Kategori harus diisi'
+    ];
+
     public function getIncrementing(){
         return false;
     }

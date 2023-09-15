@@ -105,53 +105,35 @@
                                 <h4 class="card-title">Arsip Kependudukan</h4>
                             </div>
                             <div class="card-body">
-                                {{-- @if (session('success'))
-                                    <div class="alert alert-success">
-                                        {{ session('success') }}
-                                    </div>
-                                @endif
-                                @if (session('fail'))
-                                    <div class="alert alert-danger">
-                                        {{ session('fail') }}
-                                    </div>
-                                @endif --}}
-                                {{-- @if ($errors->any())
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif --}}
                                 <div class="basic-form text-dark">
                                     <form action="{{ route('m.arkes-store') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
                                             <label>Upload file | jpeg,png,jpg,pdf | max:2MB</label>
-                                            <input type="file" name="image" class="form-control" placeholder="Pilih File">
+                                            <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" placeholder="Pilih File">
                                             @error('image')
-                                                <div class="text-danger">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label>Kategori</label>
-                                            <select name="kategori" class="form-control">
-                                                {{-- <option value="{{ $k->id_kategori }}">{{ $k->nama_kategori }}</option> --}}
+                                            <select name="kategori" class="form-control @error('kategori') is-invalid @enderror">
+                                                <option value="">-- Pilih Kategori --</option>
                                                 <option value="BPJS">BPJS</option>
                                                 <option value="Rekam Medis">Rekam Medis</option>
                                                 <option value="Lain Lain">Lain Lain</option>
                                             </select>
                                             @error('kategori')
-                                                <div class="text-danger">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label class="text-dark">Deskripsi</label>
-                                            <textarea class="form-control" name="deskripsi_arkes" rows="4" id="comment"></textarea>
-                                            @error('deskripsi_arpen')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
+                                            <textarea class="form-control" name="deskripsi_arkes" placeholder="Isi Deskripsi (Optional)" rows="4" id="comment"></textarea>
                                         </div>
                                         <button type="submit" class="btn btn-primary mt-3">Submit</button>
                                     </form>
@@ -173,22 +155,13 @@
                                     {{ session('success') }}
                                 </div>
                             @endif
-                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table text-dark table-responsive-sm display" id="example" style="min-width: 845px">
                                         <thead>
                                             <tr>
                                                 <th>Kategori</th>
-                                                <th>Aktor</th>
+                                                <th>Nama</th>
                                                 <th>Deskripsi</th>
                                                 <th>Tanggal Upload</th>
                                                 <th class="text-center">Aksi</th>
@@ -199,17 +172,21 @@
                                                 <tr>
                                                     <td> {{ $a->kategori }} </td>
                                                     <td> {{ $a->users->name }} </td>
-                                                    <td> {{ $a->deskripsi_arkes }} </td>
+                                                    <td class="text-center">
+                                                        @if ($a->deskripsi_arkes == NULL)
+                                                            -
+                                                        @else
+                                                        {{ $a->deskripsi_arkes }}                                                         
+                                                        @endif
+                                                    </td>
                                                     <td>{{ $a->created_at->format('l, d-m-Y') }}</td>
                                                     <td class="d-flex justify-content-center">
-                                                        {{-- <button type="button" style="width: 70px; margin-right: 4%" data-toggle="modal" data-target="#gambarModal{{ $a->id_arkes }}" class="btn btn-rounded btn-primary">Lihat</button> --}}
-                                                        <a href="{{ $a->url }}" target="_blank" style="width: 70px; margin-right: 4%" class="btn btn-rounded btn-primary">Lihat</a>
-                                                        <button type="button" style="width: 70px; margin-right: 4%" data-toggle="modal" data-target="#editModal{{ $a->id_arkes }}" class="btn btn-rounded btn-info">Edit</button>
+                                                        <a href="{{ $a->url }}" target="_blank" style="width: 61px; margin-right: 2%" class="btn btn-rounded btn-primary btn-xs">Lihat</a>
+                                                        <button type="button" style="width: 61px; margin-right: 2%" data-toggle="modal" data-target="#editModal{{ $a->id_arkes }}" class="btn btn-rounded btn-info btn-xs">Edit</button>
                                                         <form action="{{ route('m.delete-arkes', ['id_arkes' => $a->id_arkes]) }}" method="POST">
                                                             @csrf
                                                             @method('delete')
-                                                            
-                                                                <button type="submit" style="width: 70px" class="btn btn-rounded btn-danger">Hapus</button>
+                                                                <button type="submit" style="width: 61px" class="btn btn-rounded btn-danger btn-xs show_delete">Hapus</button>
                                                         </form>
                                                     </td>
                                                 </tr>
@@ -246,14 +223,17 @@
                                                                 <form action="{{ route('m.update-arkes', ['id_arkes' => $a->id_arkes]) }}" method="POST">
                                                                     @csrf
                                                                     @method('PUT')
-
                                                                     <div class="form-group">
-                                                                        <label>Nama:</label>
-                                                                        <input type="text" name="nama_arkes" class="form-control" value="{{ $a->nama_arkes }}">
+                                                                        <label>Kategori</label>
+                                                                        <select name="kategori" class="form-control @error('kategori') is-invalid @enderror">
+                                                                            <option @if ($a->kategori == 'BPJS') selected @endif value="BPJS">BPJS</option>
+                                                                            <option @if ($a->kategori == 'Rekam Medis') selected @endif value="Rekam Medis">Rekam Medis</option>
+                                                                            <option @if ($a->kategori == 'Lain - Lain') selected @endif value="Lain Lain">Lain Lain</option>
+                                                                        </select>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Deskripsi:</label>
-                                                                        <textarea name="deskripsi_arkes" class="form-control">{{ $a->deskripsi_arkes }}</textarea>
+                                                                        <textarea name="deskripsi_arkes" placeholder="Isi Deskripsi (Optional)" class="form-control">{{ $a->deskripsi_arkes }}</textarea>
                                                                     </div>
                                                                     <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                                                                 </form>
@@ -327,7 +307,7 @@
         var name = $(this).data("name");
         event.preventDefault();
         swal({
-            title: `Apakah Anda Ingin Menghapus Data Ini`,
+            title: `Apakah Anda ingin menghapus Data ini`,
             icon: "warning",
             buttons: true,
             dangerMode: true,

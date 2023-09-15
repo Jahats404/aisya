@@ -107,53 +107,35 @@
                                 <h4 class="card-title">Arsip Pribadi</h4>
                             </div>
                             <div class="card-body">
-                                {{-- @if (session('success'))
-                                    <div class="alert alert-success">
-                                        {{ session('success') }}
-                                    </div>
-                                @endif
-                                @if (session('fail'))
-                                    <div class="alert alert-danger">
-                                        {{ session('fail') }}
-                                    </div>
-                                @endif --}}
-                                {{-- @if ($errors->any())
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif --}}
                                 <div class="basic-form text-dark">
                                     <form action="{{ route('m.arpri-store') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
                                             <label>Upload file | jpeg,png,jpg,pdf | max:2MB</label>
-                                            <input type="file" name="image" class="form-control" placeholder="Pilih File">
+                                            <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" placeholder="Pilih File">
                                             @error('image')
-                                                <div class="text-danger">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label>Kategori</label>
-                                            <select name="kategori" class="form-control">
-                                                {{-- <option value="{{ $k->id_kategori }}">{{ $k->nama_kategori }}</option> --}}
+                                            <select name="kategori" class="form-control @error('kategori') is-invalid @enderror">
+                                                <option value="">-- Pilih Kategori --</option>
                                                 <option value="BPJS">Foto</option>
-                                                <option value="Rekam Medis">Video</option>
-                                                <option value="Lain Lain">Lain Lain</option>
+                                                <option value="Keluarga">Keluarga</option>
+                                                <option value="Lain-Lain">Lain-Lain</option>
                                             </select>
                                             @error('kategori')
-                                                <div class="text-danger">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label class="text-dark">Deskripsi</label>
-                                            <textarea class="form-control" name="deskripsi_arpri" rows="4" id="comment"></textarea>
-                                            @error('deskripsi_arpri')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
+                                            <textarea class="form-control" name="deskripsi_arpri" placeholder="Isi Deskripsi (Optional)" rows="4" id="comment"></textarea>
                                         </div>
                                         <button type="submit" class="btn btn-primary mt-3">Submit</button>
                                     </form>
@@ -175,22 +157,13 @@
                                     {{ session('success') }}
                                 </div>
                             @endif
-                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table text-dark table-responsive-sm display" id="example" style="min-width: 845px">
                                         <thead>
                                             <tr>
                                                 <th>Kategori</th>
-                                                <th>Aktor</th>
+                                                <th>Nama</th>
                                                 <th>Deskripsi</th>
                                                 <th>Tanggal Upload</th>
                                                 <th class="text-center">Aksi</th>
@@ -201,17 +174,22 @@
                                                 <tr>
                                                     <td> {{ $a->kategori }} </td>
                                                     <td> {{ $a->users->name }} </td>
-                                                    <td> {{ $a->deskripsi_arpri }} </td>
+                                                    <td class="text-center">
+                                                        @if ($a->deskripsi_arkep == NULL)
+                                                            -
+                                                        @else
+                                                        {{ $a->deskripsi_arkep }}                                                         
+                                                        @endif
+                                                    </td>
                                                     <td>{{ $a->created_at->format('l, d-m-Y') }}</td>
                                                     <td class="d-flex justify-content-center">
-                                                        {{-- <button type="button" style="width: 70px; margin-right: 4%" data-toggle="modal" data-target="#gambarModal{{ $a->id_arpri }}" class="btn btn-rounded btn-primary">Lihat</button> --}}
-                                                        <a href="{{ $a->url }}" target="_blank" style="width: 70px; margin-right: 4%" class="btn btn-rounded btn-primary">Lihat</a>
-                                                        <button type="button" style="width: 70px; margin-right: 4%" data-toggle="modal" data-target="#editModal{{ $a->id_arpri }}" class="btn btn-rounded btn-info">Edit</button>
+                                                        <a href="{{ $a->url }}" target="_blank" style="width: 61px; margin-right: 2%" class="btn btn-rounded btn-primary btn-xs">Lihat</a>
+                                                        <button type="button" style="width: 61px; margin-right: 2%" data-toggle="modal" data-target="#editModal{{ $a->id_arpri }}" class="btn btn-rounded btn-info btn-xs">Edit</button>
                                                         <form action="{{ route('m.delete-arpri', ['id_arpri' => $a->id_arpri]) }}" method="POST">
                                                             @csrf
                                                             @method('delete')
                                                             
-                                                            <button type="submit" style="width: 70px" class="btn btn-rounded btn-danger show_delete">Hapus</button>
+                                                            <button type="submit" style="width: 61px" class="btn btn-rounded btn-danger btn-xs show_delete">Hapus</button>
                                                         </form>
                                                         
                                                         {{-- <form method="POST" action="{{ route('m.delete-arpri', ['id_arpri' => $a->id_arpri]) }}" id="deleteForm">
@@ -254,14 +232,17 @@
                                                                 <form action="{{ route('m.update-arpri', ['id_arpri' => $a->id_arpri]) }}" method="POST">
                                                                     @csrf
                                                                     @method('PUT')
-
                                                                     <div class="form-group">
-                                                                        <label>Nama:</label>
-                                                                        <input type="text" name="nama_arpri" class="form-control" value="{{ $a->nama_arpri }}">
+                                                                        <label>Kategori</label>
+                                                                        <select name="kategori" class="form-control @error('kategori') is-invalid @enderror">
+                                                                            <option @if ($a->kategori == 'Pribadi') selected @endif value="Pribadi">Pribadi</option>
+                                                                            <option @if ($a->kategori == 'Keluarga') selected @endif value="Keluarga">Keluarga</option>
+                                                                            <option value="Lain-Lain">Lain-Lain</option>
+                                                                        </select>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Deskripsi:</label>
-                                                                        <textarea name="deskripsi_arpri" class="form-control">{{ $a->deskripsi_arpri }}</textarea>
+                                                                        <textarea name="deskripsi_arpri" placeholder="Isi Deskripsi (Optional)" class="form-control">{{ $a->deskripsi_arpri }}</textarea>
                                                                     </div>
                                                                     <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                                                                 </form>
