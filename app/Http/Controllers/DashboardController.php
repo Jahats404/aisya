@@ -106,6 +106,23 @@ class DashboardController extends Controller
         return view('datadesa',compact('namaKec','daftarDesa'));
     }
 
+
+// ========================================  TOTAL MASYARAKAT   ========================================================================
+// ========================================  TOTAL MASYARAKAT   ========================================================================
+
+        public function totMasyarakat() {
+                $masyarakat = User::whereRaw('length(nik) = 16')->get();
+                return view('admin.daftar-masyarakat', compact('masyarakat'));
+        }
+
+        public function destroyMasyarakat(Request $request, $id) {
+                $userID = User::findOrFail($id)->delete();
+                return redirect()->back()->with('success', 'Berhasil menghapus Masyarakat');
+
+        }
+
+
+
 //  ==== DETAIL DESA ===== DETAIL DESA ===== DETAIL DESA ===== DETAIL DESA ===== DETAIL DESA ===== DETAIL DESA ===== DETAIL DESA ===== DETAIL DESA ===== DETAIL DESA ===== DETAIL DESA ===== DETAIL DESA ==================================================================================
 
     public function Adipala(){
@@ -476,14 +493,6 @@ class DashboardController extends Controller
         $namaKecamatan = $ambilNama[0]->nama;
         
         return view('admin.data-desa', compact('desa', 'namaKecamatan'));
-    }
-
-// ========================================  TOTAL MASYARAKAT   ========================================================================
-// ========================================  TOTAL MASYARAKAT   ========================================================================
-
-    public function totMasyarakat() {
-        $masyarakat = User::get();
-        return view('admin.daftar-masyarakat', compact('masyarakat'));
     }
     
 }
