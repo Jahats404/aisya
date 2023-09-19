@@ -24,7 +24,7 @@ class Apendidikan extends Model
     }
 
     public static $rules = [
-        'image' => 'mimes:jpeg,png,jpg,pdf|max:2048|required',
+        'image' => 'mimes:jpeg,png,jpg,pdf|max:255|required',
         'jenjang' => 'required',
         'kategori' => 'required',
     ];

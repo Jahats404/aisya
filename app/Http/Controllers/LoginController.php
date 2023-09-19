@@ -52,6 +52,7 @@ class LoginController extends Controller
             Session::flash('gagal', 'Email atau Password Salah');
             return redirect('/login');
         }
+        
     }
 
     public function actionlogout()

@@ -41,6 +41,11 @@ Route::get('/route-clear', function() {
     return 'Route cache cleared!';
 });
 
+// Auth::routes(['verify' => true ]);
+
+// Route::get('/email/verify/need-verification', [UserController::class, 'verify'])->name('verification.notice');
+// Route::get('/email/verify/{id}/{hash}', [UserController::class, 'verify'])->middleware('auth','signed')->name('verification.verify');
+
 Route::get('register', [UserController::class, 'register'])->name('register');
 Route::post('register/action', [UserController::class, 'actionregister'])->name('actionregister');
 
@@ -52,13 +57,6 @@ Route::get('/error', [LoginController::class, 'error'])->name('error');
 
 Route::post('/process-data', [DashboardController::class, 'processData']);
 Route::get('/get-states/{country_id}', 'WilayahController@getStates');
-
-
-
-// Route::prefix('admin')->middleware('isAdmin')->group(function () {
-//     Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('a.dashboard');
-//     Route::post('/daftar-desa',[DashboardController::class, 'kode'])->name('kode.wilayah');
-// });
 
 
 Route::prefix('masyarakat')->middleware('isMasyarakat')->group(function () {
@@ -131,3 +129,6 @@ Route::prefix('admin')->middleware('isAdmin')->group(function () {
     Route::get('/desa-Binangun',[DashboardController::class, 'Binangun'])->name('Binangun');
     Route::get('/desa-Nusawungu',[DashboardController::class, 'Nusawungu'])->name('Nusawungu');
 });
+// Auth::routes();
+
+// Route::get('/ui', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -49,7 +49,7 @@ https://templatemo.com/tm-590-topic-listing
                     </button>
     
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-lg-5 me-lg-auto">
+                        <ul class="navbar-nav d-flex ms-lg-5">
                             <li class="nav-item">
                                 <a class="nav-link click-scroll" href="#section_1">Home</a>
                             </li>
@@ -70,21 +70,13 @@ https://templatemo.com/tm-590-topic-listing
                                 <a class="nav-link click-scroll" href="#section_5">Kontak</a>
                             </li>
 
-                            
-
-                            {{-- <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
-
-                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="topics-listing.html">Topics Listing</a></li>
-
-                                    <li><a class="dropdown-item" href="contact.html">Contact Form</a></li>
-                                </ul>
-                            </li> --}}
                         </ul>
-                        <li class="d-flex text-white">
-                            <a class="nav-link" href="{{ route('login') }}">LOGIN</a>
-                        </li>
+                        <span class="navbar-text ms-auto">
+                            <ul class="navbar-nav d-flex ms-lg-5">
+                                <a class="nav-link" href="{{ route('login') }}">LOGIN</a>
+                                <a class="nav-link" href="{{ route('register') }}">REGISTER</a>
+                            </ul>
+                        </span>
 
                         {{-- <div class="d-none d-lg-block">
                             <a class="nav-link click-scroll" href="">Login</a>
@@ -534,10 +526,7 @@ https://templatemo.com/tm-590-topic-listing
                 <div class="row">
 
                     <div class="col-lg-3 col-12 mb-4 pb-2">
-                        <a class="navbar-brand mb-2" href="index.html">
-                            <i class="bi-back"></i>
-                            <span>Topic</span>
-                        </a>
+                        <img src="{{ asset('landing/images/datar.png') }}" class="" height="50" width="120" alt="">
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-6">

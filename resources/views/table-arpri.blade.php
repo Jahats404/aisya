@@ -45,9 +45,11 @@
         ***********************************-->
         <div class="nav-header">
             <a href="index.html" class="brand-logo">
-                <img class="logo-abbr" aria-placeholder="AISYA" src="{{ asset('images/favicon.png') }}" alt="">
-                <img class="logo-compact" aria-placeholder="AISYA" src="{{ asset('images/favicon.png') }}" alt="">
-                <img class="brand-title" src="./images/logo-text.png" alt="">
+                <a href="https://aisya.cilacapkab.go.id/" class="brand-logo">
+                    {{-- <img class="logo-abbr" src="{{ asset('images/faviconb.png') }}" alt=""> --}}
+                    <img class="logo-compact" src="{{ asset('images/favicon.png') }}" alt="">
+                    <img class="brand-title" src="{{ asset('images/favicon.png') }}" alt="">
+                </a>
             </a>
 
             <div class="nav-control">
@@ -93,8 +95,8 @@
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Arsip</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Daftar Arsip</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Daftar Arsip</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Arsip Pribadi</a></li>
                         </ol>
                     </div>
                 </div>
@@ -111,7 +113,7 @@
                                     <form action="{{ route('m.arpri-store') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
-                                            <label>Upload file | jpeg,png,jpg,pdf | max:2MB</label>
+                                            <label class="text-danger">Upload file | jpeg,png,jpg,pdf | max:2MB</label>
                                             <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" placeholder="Pilih File">
                                             @error('image')
                                                 <span class="invalid-feedback" role="alert">
@@ -271,7 +273,7 @@
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">Quixkit</a> 2019</p>
+                <p>Copyright © Designed &amp; Developed by <a href="https://aisya.cilacapkab.go.id/">AIYSA</a> 2023</p>
             </div>
         </div>
         <!--**********************************

@@ -4,19 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Wilayah;
+use App\Models\Apribadi;
 use App\Models\Apendidikan;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Apribadi;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Auth\Events\Verified;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Foundation\Auth\EmailVerifycationRequest;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Mail\VerificationMail;
+use Illuminate\Support\Facades\Mail;
+ 
 class UserController extends Controller
 {
     public function register()
@@ -112,10 +119,30 @@ class UserController extends Controller
             'remember_token' => Str::random(60),
         ]);
 
-        Session::flash('sukses', 'Register Berhasil. Akun Anda sudah Aktif silahkan Login menggunakan username dan password.');
-        return redirect('register');
+        // event(new Registered($user));
+        // auth()->login($user);
+        // Mail::to($user->email)->send(new VerificationMail($user));
+
+        // return redirect()->route('verification.notice')->with('sukses', 'Register Berhasil. Akun Anda sudah Aktif silahkan Login menggunakan username dan password.');;
+        Session::flash('sukses', 'Register Berhasil. Akun Anda sudah Aktif silahkan Login menggunakan Email dan Password.');
+        return redirect('login');
     }
 
+//========================================= VERIFYCATION EMAIL ================================================================================================================
+
+    public function notice(){
+        return "Mohon untuk melakukan verifikasi email terlebih dahulu";
+    }
+
+    public function verify(Request $request){
+        // $request->fulfill();
+
+        return $request->user()->hasVerifiedEmail()
+                        ? redirect($this->redirectPath())
+                        : view('auth.verify');
+    }
+
+//=========================================================================================================================================================
     public function profile(){
         $user = Auth::user();
         return view('profile',compact('user'));

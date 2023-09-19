@@ -17,10 +17,10 @@ class DashboardController extends Controller
 {
     public function dashboardA(){
         $id = Auth::user()->id;
-        $countkependudukan = Akependudukan::where('user_id', $id)->count();
-        $countpendidikan = Apendidikan::where('user_id', $id)->count();
-        $countkesehatan = Akesehatan::where('user_id', $id)->count();
-        $countpribadi = Apribadi::where('user_id', $id)->count();
+        $countkependudukan = Akependudukan::count();
+        $countpendidikan = Apendidikan::count();
+        $countkesehatan = Akesehatan::count();
+        $countpribadi = Apribadi::count();
         $kota = '33.01';
         //query untuk menampilkan seluruh nama di tabel wilayah dengan panjang kodenya 8
         $namaKecamatan = DB::table('wilayah')
@@ -121,9 +121,6 @@ class DashboardController extends Controller
 
         }
 
-
-
-//  ==== DETAIL DESA ===== DETAIL DESA ===== DETAIL DESA ===== DETAIL DESA ===== DETAIL DESA ===== DETAIL DESA ===== DETAIL DESA ===== DETAIL DESA ===== DETAIL DESA ===== DETAIL DESA ===== DETAIL DESA ==================================================================================
 
     public function Adipala(){
         $kode = '33.01.03';

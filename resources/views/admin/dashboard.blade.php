@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Focus - Bootstrap Admin Dashboard </title>
+    <title>AISYA - Arsip Masyarakat </title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
     <link rel="stylesheet" href="{{ asset('vendor/owl-carousel/css/owl.carousel.min.css') }}">
@@ -44,10 +44,10 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="" class="brand-logo">
-                <img class="logo-abbr" aria-placeholder="AISYA" src="{{ asset('images/favicon.png') }}" alt="">
-                <img class="logo-compact" aria-placeholder="AISYA" src="{{ asset('images/favicon.png') }}" alt="">
-                <img class="brand-title" src="./images/logo-text.png" alt="">
+            <a href="https://aisya.cilacapkab.go.id/" class="brand-logo">
+                {{-- <img class="logo-abbr" src="{{ asset('images/faviconb.png') }}" alt=""> --}}
+                <img class="logo-compact" src="{{ asset('images/favicon.png') }}" alt="">
+                <img class="brand-title" src="{{ asset('images/favicon.png') }}" alt="">
             </a>
 
             <div class="nav-control">
@@ -107,9 +107,7 @@
                                     <div class="stat-text">Arsip Kependudukan </div>
                                     <div class="stat-digit"></div>
                                 </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success w-" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+                                <h1>{{ $countkependudukan }}</h1>
                             </div>
                         </div>
                     </div>
@@ -120,9 +118,7 @@
                                     <div class="stat-text">Arsip Pendidikan</div>
                                     <div class="stat-digit"></div>
                                 </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-primary w-" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+                                <h1>{{ $countpendidikan }}</h1>
                             </div>
                         </div>
                     </div>
@@ -133,9 +129,7 @@
                                     <div class="stat-text">Arsip Kesehatan</div>
                                     <div class="stat-digit"></div>
                                 </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-warning w-" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+                                <h1>{{ $countkesehatan }}</h1>
                             </div>
                         </div>
                     </div>
@@ -146,9 +140,7 @@
                                     <div class="stat-text">Arsip Pribadi</div>
                                     <div class="stat-digit"></div>
                                 </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-danger w-" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+                                <h1>{{ $countpribadi }}</h1>
                             </div>
                         </div>
                         <!-- /# card -->
@@ -208,7 +200,7 @@
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">Quixkit</a> 2019</p>
+                <p>Copyright © Designed &amp; Developed by <a href="https://aisya.cilacapkab.go.id/">AIYSA</a> 2023</p>
                 <p>Distributed by <a href="https://themewagon.com/" target="_blank">Themewagon</a></p> 
             </div>
         </div>

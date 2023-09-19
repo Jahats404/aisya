@@ -98,14 +98,14 @@
             @endif
             @if (auth()->user()->role_id == 2)
                 
-            <li class="nav-label">Daftar</li>
+            <li class="nav-label">Arsip</li>
             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                class="icon icon-layout-25"></i><span class="nav-text">Daftar</span></a>
+                class="icon icon-layout-25"></i><span class="nav-text">Daftar Arsip</span></a>
                 <ul aria-expanded="false">
-                    <li><a href="{{ route('m.table-arpen') }}">Daftar Arsip Pendidikan</a></li>
-                    <li><a href="{{ route('m.table-arkep') }}">Daftar Arsip Kependudukan</a></li>
-                    <li><a href="{{ route('m.table-arkes') }}">Daftar Arsip Kesehatan</a></li>
-                    <li><a href="{{ route('m.table-arpri') }}">Daftar Arsip Pribadi</a></li>
+                    <li><a href="{{ route('m.table-arpen') }}">Arsip Pendidikan</a></li>
+                    <li><a href="{{ route('m.table-arkep') }}">Arsip Kependudukan</a></li>
+                    <li><a href="{{ route('m.table-arkes') }}">Arsip Kesehatan</a></li>
+                    <li><a href="{{ route('m.table-arpri') }}">Arsip Pribadi</a></li>
                 </ul>
             </li>
             @endif

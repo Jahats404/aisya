@@ -27,6 +27,9 @@
                                     @if (session('gagal'))
                                         <div class="alert alert-danger">{{ session('gagal') }}</div>
                                     @endif
+                                    @if (session('sukses'))
+                                        <div class="alert alert-success">{{ session('sukses') }}</div>
+                                    @endif
                                     <form action="{{ route('actionlogin') }}" method="POST">
                                         @csrf
                                         <div class="form-group">
