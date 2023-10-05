@@ -24,6 +24,5 @@ class isMasyarakat
             // abort(403, 'Unauthorized'); 
             return redirect('/error');
         }
-        return redirect('/login');
     }
 }

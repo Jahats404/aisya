@@ -82,6 +82,16 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    public function getRedirectRoute()
+    {
+        return match((int)$this->role_id) {
+            1 => route('a.admin'),
+            2 => route('m.admin'),
+            default => route('default.dashboard'), // Ganti 'default.dashboard' dengan rute default yang sesuai
+        };
+    }
+
+
     public function roles(){
         return $this->belongsTo(Role::class, 'role_id', 'id');
     }

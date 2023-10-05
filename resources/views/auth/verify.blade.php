@@ -1,28 +1,58 @@
-@extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+<!DOCTYPE html>
+<html lang="en" class="h-100">
 
-                <div class="card-body">
-                    @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Aisya - Arsip Masyarakat </title>
+        <!-- Favicon icon -->
+        <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
+        <!-- Custom Stylesheet -->
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    
+    </head>
+
+<body class="h-100">
+    <div class="authincation h-100">
+        <div class="container-fluid h-100">
+            <div class="row justify-content-center h-100 align-items-center">
+                <div class="col-md-6">
+                    <div class="authincation-content">
+                        <div class="row no-gutters">
+                            <div class="col-xl-12">
+                                <div class="auth-form">
+                                    <h4 class="text-center mb-4">
+                                        Sebelum melanjutkan, silakan periksa email Anda untuk tautan verifikasi. <br>
+                                        Jika belum mendapatkan email silahkan klik tombol dibawah.
+                                    </h4>
+                                    @if (session('status'))
+                                        <div class="alert alert-success" role="alert">
+                                            {{ session('status') }}
+                                        </div>
+                                    @endif
+                                    <form method="POST" action="{{ route('verification.resend') }}">
+                                        @csrf
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary btn-block">Kirim ulang tautan verifikasi Email</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                    @endif
-
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }},
-                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-@endsection
+    <!-- #/ container-fluid -->
+    <!-- Common JS -->
+    <script src="{{ asset('vendor/global/global.min.js') }}"></script>
+    <!-- Custom script -->
+    <script src="{{ asset('vendor/quixnav/quixnav.min.js') }}"></script>
+    <script src="{{ asset('js/quixnav-init.js') }}"></script>
+    <script src="{{ asset('js/custom.min.js') }}"></script>
+</body>
+
+</html>

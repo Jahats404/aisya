@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -55,13 +57,26 @@ class LoginController extends Controller
         
     }
 
-    public function actionlogout()
+    public function actionlogout(Request $request)
     {
-        Auth::logout();
-        return redirect('/login');
+        // Auth::logout();
+        // return redirect('/login');
+        Auth::guard()->logout();
+
+        $request->session()->invalidate();
+    
+        $request->session()->regenerateToken();
+    
+        if ($response = $this->loggedOut($request)) {
+            return $response;
+        }
+    
+        return $request->wantsJson()
+            ? new JsonResponse([], 204)
+            : redirect('/');
     }
 
     public function error(){
-        return view('eror.400');
+        return view('login');
     }
 }

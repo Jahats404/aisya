@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -49,11 +50,18 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        // return Validator::make($data, [
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'password' => ['required', 'string', 'min:8', 'confirmed'],
+        // ]);
+
+        return $validator = Validator::make($data, User::$rules, User::$messages);
+        if ($validator->fails()) {
+            return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();
+        }
     }
 
     /**
@@ -64,9 +72,31 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        //untuk mengambil kode desa yang di inputkan
+        $kodeDesa = $data['desa'];
+        $kodeKecamatan = $data['kecamatan'];
+
+        // mengambil nama kecamatan berdasarkan kode
+        $namakecamatan = DB::table('wilayah')
+                ->select('nama')
+                ->where('kode', $kodeKecamatan)
+                ->get();
+        // mengambil nama kecamatan berdasarkan kode
+        $namaDesa = DB::table('wilayah')
+                ->select('nama')
+                ->where('kode', $kodeDesa)
+                ->get();
+        
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'tanggal_lahir' => $data['tanggal_lahir'],
+            'nik' => $data['nik'],
+            'kecamatan' => $namakecamatan[0]->nama,
+            'desa' => $namaDesa[0]->nama,
+            'role_id' => 2,
+            'kk' => $data['kk'],
+            'no_hp' => $data['no_hp'],
             'password' => Hash::make($data['password']),
         ]);
     }

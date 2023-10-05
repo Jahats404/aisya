@@ -37,7 +37,7 @@
                                     @if (session('sukses'))
                                         <div class="alert alert-success">{{ session('sukses') }}</div>
                                     @endif
-                                    <form action="{{ route('actionregister') }}" method="POST">
+                                    <form action="{{ route('register') }}" method="POST">
                                         @csrf
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
@@ -133,8 +133,19 @@
                                                 @enderror
                                             </div>
                                             <div class="form-group col-md-6">
+                                                <label>Password Confirm</label>
+                                                <input type="password" name="password_confirmation"  id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
+                                            <input type="checkbox" id="password-confirm" onchange="togglePasswordVisibility()">
+                                            <label for="showPassword">Lihat Password</label>
+                                                @error('password')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group col-md-12">
                                                 <div class="text-center mt-4">
-                                                    <button type="submit" class="btn btn-primary btn-block">Daftarkan</button>
+                                                    <button type="submit" class="btn center justify-content-center btn-primary btn-block">{{ __('Register') }}</button>
                                                 </div>
                                             </div>
                                         </div>

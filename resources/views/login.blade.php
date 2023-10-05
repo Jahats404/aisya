@@ -58,7 +58,10 @@
                                         </div>
                                     </form>
                                     <div class="new-account mt-3">
-                                        <p>Belum memiliki Akun? <a class="text-primary" href="{{ route('register') }}">Daftar</a></p>
+                                        <p>Lupa Password? <a class="text-primary" href="{{ route('password.request') }}">Atur Ulang</a>
+                                            <br>
+                                            Belum memiliki Akun? <a class="text-primary" href="{{ route('register') }}">Daftar</a> 
+                                        </p>
                                     </div>
                                 </div>
                             </div>

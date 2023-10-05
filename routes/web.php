@@ -30,6 +30,9 @@ Route::get('/map', function () {
     return view('admin.map');
 });
 Route::get('/', [LoginController::class, 'page']);
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/storage-link', function() {
     Artisan::call('storage:link');
@@ -46,13 +49,13 @@ Route::get('/route-clear', function() {
 // Route::get('/email/verify/need-verification', [UserController::class, 'verify'])->name('verification.notice');
 // Route::get('/email/verify/{id}/{hash}', [UserController::class, 'verify'])->middleware('auth','signed')->name('verification.verify');
 
-Route::get('register', [UserController::class, 'register'])->name('register');
+// Route::get('register', [UserController::class, 'register'])->name('register');
 Route::post('register/action', [UserController::class, 'actionregister'])->name('actionregister');
 
-Route::get('/login', [LoginController::class, 'login'])->name('login');
+// Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
 Route::post('/getkecamatan', [UserController::class, 'getkecamatan'])->name('getkecamatan');
-Route::get('logout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
+Route::post('/logout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
 Route::get('/error', [LoginController::class, 'error'])->name('error');
 
 Route::post('/process-data', [DashboardController::class, 'processData']);
@@ -132,3 +135,7 @@ Route::prefix('admin')->middleware('isAdmin')->group(function () {
 // Auth::routes();
 
 // Route::get('/ui', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes(['verify' => true]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -91,11 +91,23 @@
                             <i class="icon-user"></i>
                             <span class="ml-2">Profile </span>
                         </a>
-                        @endif
-                    <a href="{{ route('actionlogout') }}" class="dropdown-item">
+                    @endif
+                    {{-- <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                    </form>
+                    <a class="dropdown-item">
                         <i class="icon-key"></i>
                         <span class="ml-2">Logout </span>
-                    </a>
+                    </a> --}}
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                 </div>
             </li>
         </ul>
