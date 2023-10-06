@@ -44,12 +44,10 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="index.html" class="brand-logo">
-                <a href="https://aisya.cilacapkab.go.id/" class="brand-logo">
-                    {{-- <img class="logo-abbr" src="{{ asset('images/faviconb.png') }}" alt=""> --}}
-                    <img class="logo-compact" src="{{ asset('images/favicon.png') }}" alt="">
-                    <img class="brand-title" src="{{ asset('images/favicon.png') }}" alt="">
-                </a>
+            <a href="https://aisya.cilacapkab.go.id/" class="brand-logo">
+                {{-- <img class="logo-abbr" src="{{ asset('images/faviconb.png') }}" alt=""> --}}
+                <img class="logo-compact" src="{{ asset('images/favicon.png') }}" alt="">
+                <img class="brand-title" src="{{ asset('images/favicon.png') }}" alt="">
             </a>
 
             <div class="nav-control">
@@ -125,7 +123,7 @@
                                             <label>Kategori</label>
                                             <select name="kategori" class="form-control @error('kategori') is-invalid @enderror">
                                                 <option value="">-- Pilih Kategori --</option>
-                                                <option value="BPJS">Foto</option>
+                                                <option value="Pribadi">Pribadi</option>
                                                 <option value="Keluarga">Keluarga</option>
                                                 <option value="Lain-Lain">Lain-Lain</option>
                                             </select>
@@ -177,10 +175,10 @@
                                                     <td> {{ $a->kategori }} </td>
                                                     <td> {{ $a->users->name }} </td>
                                                     <td class="text-center">
-                                                        @if ($a->deskripsi_arkep == NULL)
+                                                        @if ($a->deskripsi_arpri == NULL)
                                                             -
                                                         @else
-                                                        {{ $a->deskripsi_arkep }}                                                         
+                                                        {{ $a->deskripsi_arpri }}                                                         
                                                         @endif
                                                     </td>
                                                     <td>{{ $a->created_at->format('l, d-m-Y') }}</td>

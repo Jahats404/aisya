@@ -261,7 +261,7 @@
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Deskripsi:</label>
-                                                                        <textarea name="deskripsi_arpen" placeholder="Isi Deskripsi" class="form-control">{{ $a->deskripsi_arpen }}</textarea>
+                                                                        <textarea name="deskripsi_arpen" placeholder="Isi Deskripsi (Optional)" class="form-control">{{ $a->deskripsi_arpen }}</textarea>
                                                                     </div>
                                                                     <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                                                                 </form>

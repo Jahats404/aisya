@@ -21,7 +21,7 @@
                         <div class="row no-gutters">
                             <div class="col-xl-12">
                                 <div class="auth-form">
-                                    <img src="{{ asset('landing/images/topics/export.1.3.jpg') }}" class="rounded mx-auto d-block" height="30%" width="30%" alt="">
+                                    <img src="{{ asset('landing/images/topics/logonew.png') }}" class="rounded mx-auto d-block" height="30%" width="30%" alt="">
                                     <br>
                                     <h4 class="text-center mb-4">Masuk ke Akun anda</h4>
                                     @if (session('gagal'))
