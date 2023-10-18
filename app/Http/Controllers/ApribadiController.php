@@ -53,7 +53,6 @@ class ApribadiController extends Controller
 
             // Tambahkan data ke tabel arsip_pendidikan
             $arpri = new Apribadi;
-            $arpri->id_arpri = $newIdFormat;
             $arpri->user_id = $id;
             $arpri->kategori = $request->input('kategori');
             $arpri->nama_arpri = $originalName;

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('apribadi', function (Blueprint $table) {
-            $table->uuid('id_arpri')->primary();
+            $table->bigIncrements('id_arpri');
             $table->unsignedBigInteger('user_id');
             $table->string('kategori');
             $table->string('nama_arpri');

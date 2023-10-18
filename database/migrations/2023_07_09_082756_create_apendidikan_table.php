@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('apendidikan', function (Blueprint $table) {
-            $table->uuid('id_arpen')->primary();
+            $table->bigIncrements('id_arpen');
             $table->unsignedBigInteger('user_id');
             $table->string('kategori');
             $table->string('jenjang');

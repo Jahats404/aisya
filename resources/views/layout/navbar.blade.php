@@ -81,7 +81,7 @@
                     @if (Auth()->user()->url)
                     <img src="{{ Auth()->user()->url }}" alt="user-avatar" class="d-block mr-3 rounded-circle mb-3" height="100" width="100" id="uploadedAvatar" />
                     @else
-                    <img src="http://localhost:8000/storage/img-profile/profile.png" alt="user-avatar" class="d-block mr-3 rounded-circle mb-3" height="100" width="100" id="uploadedAvatar" />
+                    <img src="{{ asset('images/svg/profile.svg') }}" alt="user-avatar" class="d-block mr-3 rounded-circle mb-3" height="100" width="100" id="uploadedAvatar" />
                     @endif
                     
                 </a>

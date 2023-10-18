@@ -51,7 +51,6 @@ class AkesehatanController extends Controller
             $kk = $userKK[0]->kk;
             // Tambahkan data ke tabel arsip_pendidikan
             $arkes = new Akesehatan;
-            $arkes->id_arkes = $newIdFormat;
             $arkes->user_id = $id;
             $arkes->kategori = $request->input('kategori');
             $arkes->nama_arkes = $originalName;

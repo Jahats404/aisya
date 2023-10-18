@@ -115,7 +115,7 @@
                                             <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" placeholder="Pilih File">
                                             @error('image')
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
+                                                    <strong>{{ $message == 'The image failed to upload.' ? 'Ukuran maksimal 2MB' : $message ; }}</strong>
                                                 </span>
                                             @enderror
                                         </div>

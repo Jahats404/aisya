@@ -60,6 +60,7 @@ Route::get('/error', [LoginController::class, 'error'])->name('error');
 
 Route::post('/process-data', [DashboardController::class, 'processData']);
 Route::get('/get-states/{country_id}', 'WilayahController@getStates');
+Route::post('/daftar-desa',[DashboardController::class, 'kode'])->name('kode.wilayah');
 
 
 Route::prefix('masyarakat')->middleware('isMasyarakat')->group(function () {
@@ -105,7 +106,7 @@ Route::prefix('admin')->middleware('isAdmin')->group(function () {
     Route::get('/daftar-masyarakat',[DashboardController::class, 'totMasyarakat'])->name('a.totMasyarakat');
     Route::delete('/delete-masyarakat/{id}', [DashboardController::class, 'destroyMasyarakat'])->name('a.delete-masyarakat');
     // ========================================== DAFTAR-DESA ==========================================
-    Route::post('/daftar-desa',[DashboardController::class, 'kode'])->name('kode.wilayah');
+    
     // ========================================== DETAIL MAPS ==========================================
     Route::get('/desa-Adipala',[DashboardController::class, 'Adipala'])->name('adipala');
     Route::get('/desa-Kesugihan',[DashboardController::class, 'Kesugihan'])->name('kesugihan');

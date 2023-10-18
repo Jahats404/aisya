@@ -158,8 +158,6 @@ class UserController extends Controller
         $profile = User::findOrFail(Auth::user()->id);
         $profile->name = $request->input('name');
         $profile->tanggal_lahir = $request->input('tanggal_lahir');
-        $profile->nik = $request->input('nik');
-        $profile->kk = $request->input('kk');
         $profile->no_hp = $request->input('no_hp');
         $profile->email = $request->input('email');
         $profile->save();

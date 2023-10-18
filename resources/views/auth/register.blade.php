@@ -78,7 +78,7 @@
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>kecamatan</label>
-                                                <select class="form-control @error('kecamatan') is-invalid @enderror" id="kecamatan" name="kecamatan" value="{{ old('kecamatan') }}" autocomplete="kecamatan" data-placeholder="Pilih Kecamatan">
+                                                <select class="form-control @error('kecamatan') is-invalid @enderror" id="kecamatan" required name="kecamatan" value="{{ old('kecamatan') }}" autocomplete="kecamatan" data-placeholder="Pilih Kecamatan">
                                                     <option value="" selected>Pilih Kecamatan</option>
                                                     @foreach ($kecamatan as $item)
                                                     @if ($item->nama == 'KAB. CILACAP')
@@ -95,7 +95,7 @@
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>desa</label>
-                                                <select class="form-control @error('desa') is-invalid @enderror" id="desa" name="desa" value="{{ old('desa') }}" autocomplete="desa" data-placeholder="Pilih Desa">
+                                                <select class="form-control @error('desa') is-invalid @enderror" id="desa" required name="desa" value="{{ old('desa') }}" autocomplete="desa" data-placeholder="Pilih Desa">
                                                 </select>
                                                 @error('desa')
                                                     <span class="invalid-feedback" role="alert">
@@ -124,8 +124,8 @@
                                             <div class="form-group col-md-6">
                                                 <label>Password</label>
                                                 <input type="password" name="password"  id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
-                                            <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()">
-                                            <label for="showPassword">Lihat Password</label>
+                                                <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()">
+                                                <label for="showPassword">Lihat Password</label>
                                                 @error('password')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -134,10 +134,21 @@
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Password Confirm</label>
-                                                <input type="password" name="password_confirmation"  id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
-                                            <input type="checkbox" id="password-confirm" onchange="togglePasswordVisibility()">
-                                            <label for="showPassword">Lihat Password</label>
-                                                @error('password')
+                                                <input type="password" name="password_confirmation"  id="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="Password">
+                                                <input type="checkbox" id="password-confirm" onchange="togglePasswordConfirmationVisibility()">
+                                                <label for="password-confirm">Lihat Password</label>
+                                                @error('password_confirmation')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group col-md-6 ms-3">
+                                                <input class="form-check-input @error('setuju') is-invalid @enderror" type="checkbox" name="setuju" value="setuju" id="flexCheckDefault">
+                                                <label class="form-check-label" for="flexCheckDefault">
+                                                    Klik untuk menyetujui segala ketentuan 
+                                                </label>
+                                                @error('setuju')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -230,6 +241,18 @@
     function togglePasswordVisibility() {
         var passwordInput = document.getElementById('password');
         var showPasswordCheckbox = document.getElementById('showPassword');
+
+        if (showPasswordCheckbox.checked) {
+            passwordInput.setAttribute("type", "text");
+        } else {
+            passwordInput.setAttribute("type", "password");
+        }
+    }
+</script>
+<script>
+    function togglePasswordConfirmationVisibility() {
+        var passwordInput = document.getElementById('password_confirmation');
+        var showPasswordCheckbox = document.getElementById('password-confirm');
 
         if (showPasswordCheckbox.checked) {
             passwordInput.setAttribute("type", "text");

@@ -143,7 +143,7 @@
                                             @if (Auth()->user()->url)
                                                 <img src="{{ Auth()->user()->url }}" alt="user-avatar" class="d-block mr-3 rounded-circle mb-3" height="150" width="150" id="uploadedAvatar" />
                                             @else
-                                            <img src="http://localhost:8000/storage/img-profile/profile.png" alt="user-avatar" class="d-block mr-3 rounded-circle mb-3" height="150" width="150" id="uploadedAvatar" />
+                                            <img src="{{ asset('images/svg/profile.svg') }}" alt="user-avatar" class="d-block mr-3 rounded-circle mb-3" height="150" width="150" id="uploadedAvatar" />
                                             @endif
                                         </div>
                                     </div>
@@ -300,11 +300,11 @@
                                                             <div class="form-row">
                                                                 <div class="form-group col-md-6">
                                                                     <label>NIK</label>
-                                                                    <input type="number" name="nik" placeholder="NIK" class="form-control" value="{{ $user->nik }}">
+                                                                    <input type="number" name="nik" disabled placeholder="NIK" class="form-control" value="{{ $user->nik }}">
                                                                 </div>
                                                                 <div class="form-group col-md-6">
                                                                     <label>KK</label>
-                                                                    <input type="number" name="kk" placeholder="KK" class="form-control" value="{{ $user->kk }}">
+                                                                    <input type="number" name="kk" disabled placeholder="KK" class="form-control" value="{{ $user->kk }}">
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">

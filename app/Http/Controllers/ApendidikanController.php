@@ -55,7 +55,7 @@ class ApendidikanController extends Controller
 
         // Tambahkan data ke tabel arsip_pendidikan
         $arpen = new Apendidikan;
-        $arpen->id_arpen = $newIdFormat;
+        
         $arpen->user_id = $id;
         $arpen->kategori = $request->input('kategori');
         $arpen->jenjang = $request->input('jenjang');

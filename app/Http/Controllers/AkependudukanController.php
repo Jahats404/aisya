@@ -51,7 +51,6 @@ class AkependudukanController extends Controller
             $kk = $userKK[0]->kk;
             // Tambahkan data ke tabel arsip_pendidikan
             $arkep = new Akependudukan;
-            $arkep->id_arkep = $newIdFormat;
             $arkep->user_id = $id;
             $arkep->kategori = $request->input('kategori');
             $arkep->nama_arkep = $originalName;

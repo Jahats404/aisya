@@ -14,14 +14,14 @@ class Akesehatan extends Model
     protected $keyType = 'string';
     protected $primaryKey = 'id_arkes';
 
-    protected static function boot(){
-        parent::boot();
-        static::creating(function ($model){
-            if (empty($model->{$model->getKeyName()})) {
-                $model->{$model->getKeyName()} = Str::uuid()->toString();
-            }
-        });
-    }
+    // protected static function boot(){
+    //     parent::boot();
+    //     static::creating(function ($model){
+    //         if (empty($model->{$model->getKeyName()})) {
+    //             $model->{$model->getKeyName()} = Str::uuid()->toString();
+    //         }
+    //     });
+    // }
 
     public static $rules = [
         'image' => 'mimes:jpeg,png,jpg,pdf|max:2048|required',

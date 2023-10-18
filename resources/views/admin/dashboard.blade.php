@@ -279,28 +279,28 @@
                 borderWidth: 1
             }]
         },
-        options: {
-            onClick: function(event, elements) {
-            if (elements.length > 0) {
-                // Ambil data dari elemen yang diklik
-                var data = elements[0]._chart.data;
-                var datasetIndex = elements[0]._datasetIndex;
-                var index = elements[0]._index;
+        // options: {
+        //     onClick: function(event, elements) {
+        //     if (elements.length > 0) {
+        //         // Ambil data dari elemen yang diklik
+        //         var data = elements[0]._chart.data;
+        //         var datasetIndex = elements[0]._datasetIndex;
+        //         var index = elements[0]._index;
 
-                // Dapatkan nilai dari bar yang diklik
-                var value = data.datasets[datasetIndex].data[index];
-                var kodeWilayah = kecamatanKode[index];
+        //         // Dapatkan nilai dari bar yang diklik
+        //         var value = data.datasets[datasetIndex].data[index];
+        //         var kodeWilayah = kecamatanKode[index];
 
-                 // Isi nilai kodeWilayah ke input tersembunyi
-                document.getElementById('hiddenKodeWilayah').value = kodeWilayah;
+        //          // Isi nilai kodeWilayah ke input tersembunyi
+        //         document.getElementById('hiddenKodeWilayah').value = kodeWilayah;
 
-                // Submit formulir
-                document.querySelector('form').submit();
+        //         // Submit formulir
+        //         document.querySelector('form').submit();
                 
-            }
-        }
+        //     }
+        // }
             
-        }
+        // }
     });
 </script>
 </html>

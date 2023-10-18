@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('akesehatan', function (Blueprint $table) {
-            $table->uuid('id_arkes')->primary();
+            $table->bigIncrements('id_arkes');
             $table->unsignedBigInteger('user_id');
             $table->string('kategori');
             $table->string('nama_arkes');
