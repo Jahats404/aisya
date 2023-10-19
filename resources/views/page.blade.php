@@ -24,7 +24,7 @@
 
         <link href="{{ asset('landing/css/templatemo-topic-listing.css') }}" rel="stylesheet">      
 
-        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('landing/images/aisya_new.2.3.4.png') }}">
 <!--
 
 TemplateMo 590 topic listing
@@ -41,7 +41,7 @@ https://templatemo.com/tm-590-topic-listing
             <nav class="navbar navbar-expand-lg">
                 <div class="container">
                     <a class="navbar-brand" href="http://aisya.cilacapkab.go.id/">
-                        <img src="{{ asset('landing/images/datar.png') }}" class="" height="50" width="120" alt="">
+                        <img src="{{ asset('landing/images/aisya_new.2.3.1.png') }}" class="" height="70" width="120" alt="">
                     </a>
     
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -526,7 +526,7 @@ https://templatemo.com/tm-590-topic-listing
                 <div class="row">
 
                     <div class="col-lg-3 col-12 mb-4 pb-2">
-                        <img src="{{ asset('landing/images/datar.png') }}" class="" height="50" width="120" alt="">
+                        <img src="{{ asset('landing/images/aisya_new.2.3.1.png') }}" class="" height="70" width="120" alt="">
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-6">
@@ -572,7 +572,7 @@ https://templatemo.com/tm-590-topic-listing
                             
                         </div>
 
-                        <p class="copyright-text mt-lg-5 mt-4">Copyright © 2048 Topic Listing Center. All rights reserved.
+                        <p class="copyright-text mt-lg-5 mt-4">
                         
                     </div>
 

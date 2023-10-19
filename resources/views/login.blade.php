@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Aisya - Arsip Masyarakat </title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('landing/images/aisya_new.2.3.4.png') }}">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
 </head>
@@ -22,7 +22,7 @@
                             <div class="col-xl-12">
                                 <div class="auth-form">
                                     <a href="https://aisya.cilacapkab.go.id/">
-                                        <img src="{{ asset('landing/images/topics/logonew.png') }}" class="rounded mx-auto d-block" height="30%" width="30%" alt="">
+                                        <img src="{{ asset('landing/images/topics/aisya_new.2.3.jpg') }}" class="rounded mx-auto d-block" height="30%" width="30%" alt="">
                                     </a>
                                     <br>
                                     <h4 class="text-center mb-4">Masuk ke Akun anda</h4>

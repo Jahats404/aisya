@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>AISYA - Arsip Masyarakat </title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('landing/images/aisya_new.2.3.4.png') }}">
     <!-- Datatable -->
     <link href="{{ asset('vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <!-- Custom Stylesheet -->
@@ -41,12 +41,8 @@
         <!--**********************************
             Nav header start
         ***********************************-->
-        <div class="nav-header">
-            <a href="https://aisya.cilacapkab.go.id/" class="brand-logo">
-                {{-- <img class="logo-abbr" src="{{ asset('images/faviconb.png') }}" alt=""> --}}
-                <img class="logo-compact" src="{{ asset('images/favicon.png') }}" alt="">
-                <img class="brand-title" src="{{ asset('images/favicon.png') }}" alt="">
-            </a>
+        
+            @include('layout.navbar-logo')
 
             <div class="nav-control">
                 <div class="hamburger">
