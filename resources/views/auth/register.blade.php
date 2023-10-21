@@ -123,6 +123,7 @@
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Password</label>
+                                                <label class="text-danger">  *Minimal 6 Karakter</label>
                                                 <input type="password" name="password"  id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
                                                 <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()">
                                                 <label for="showPassword">Lihat Password</label>

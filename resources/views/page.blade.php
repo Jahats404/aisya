@@ -42,6 +42,8 @@ https://templatemo.com/tm-590-topic-listing
                 <div class="container">
                     <a class="navbar-brand" href="http://aisya.cilacapkab.go.id/">
                         <img src="{{ asset('landing/images/aisya_new.2.3.1.png') }}" class="" height="70" width="120" alt="">
+                        {{-- <img src="{{ asset('landing/images/aisya_new.2.3.png') }}" class="" height="70" width="70" alt=""> --}}
+                        
                     </a>
     
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -128,7 +130,7 @@ https://templatemo.com/tm-590-topic-listing
                                         </div>
                                     </div>
 
-                                    <img src="{{ asset('landing/images/topics/export.1.3.jpg') }}" class="custom-block-image img-fluid" alt="">
+                                    <img src="{{ asset('landing/images/aisya_new.2.3.1.png') }}" class="custom-block-image img-fluid" alt="">
                                 </a>
                             </div>
                         </div>
