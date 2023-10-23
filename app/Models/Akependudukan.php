@@ -12,7 +12,7 @@ class Akependudukan extends Model
     protected $table = 'akependudukan';
     protected $guarded = [];
     // protected $keyType = 'string';
-    // protected $primaryKey = 'id_arkep';
+    protected $primaryKey = 'id_arkep';
 
     // protected static function boot(){
     //     parent::boot();

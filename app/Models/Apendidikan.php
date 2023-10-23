@@ -12,7 +12,7 @@ class Apendidikan extends Model
     protected $table = 'apendidikan';
     protected $guarded = [];
     // protected $keyType = 'string';
-    // protected $primaryKey = 'id_arpen';
+    protected $primaryKey = 'id_arpen';
 
     // protected static function boot(){
     //     parent::boot();

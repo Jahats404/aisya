@@ -95,7 +95,9 @@ class ApendidikanController extends Controller
     }
 
     public function destroy($id_arpen){
+        
     $arsip = Apendidikan::findOrFail($id_arpen);
+    // dd($arsip);
     // $hashName = $image->hashName();
     // dd(('public/storage/img-arpen/' . $arsip->hashname));
     if (!empty($arsip->url)) {
